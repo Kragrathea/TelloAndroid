@@ -42,7 +42,7 @@ namespace TelloLib
         }
         public static ConnectionState connectionState = ConnectionState.Disconnected;
 
-        private static CancellationTokenSource cancelTokens = new CancellationTokenSource();//used to cancel listeners
+        private static CancellationTokenSource cancelTokens; //used to cancel listeners
 
         public static void takeOff()
         {
@@ -447,6 +447,7 @@ namespace TelloLib
         private static int maxPieceNum = 0;
         private static void startListeners()
         {
+            if (cancelTokens != null) return; //already started
             cancelTokens = new CancellationTokenSource();
             CancellationToken token = cancelTokens.Token;
 
