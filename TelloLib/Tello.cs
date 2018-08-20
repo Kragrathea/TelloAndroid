@@ -990,6 +990,8 @@ namespace TelloLib
             public float quatZ;
             public float quatW;
 
+            public float temperature;  // in celsius
+
             public void set(byte[] data)
             {
                 var index = 0;
@@ -1100,6 +1102,9 @@ namespace TelloLib
                             velE = BitConverter.ToSingle(xorBuf, index2); index2 += 4;
                             velD = BitConverter.ToSingle(xorBuf, index2); index2 += 4;
                             //Console.WriteLine(vN + " " + vE + " " + vD);
+
+                            index2 = 10 + 106;
+                            temperature = BitConverter.ToInt16(xorBuf, index2) / 100.0f;
 
                             break;
 
