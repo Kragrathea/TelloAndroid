@@ -156,6 +156,16 @@ namespace TelloLib
 
             client.Send(packet);
         }
+        public static void doBounce(bool start = false)
+        {
+            //                                          crc    typ  cmdL  cmdH  seqL  seqH  onoff crc   crc
+            var packet = new byte[] { 0xcc, 0x60, 0x00, 0x27, 0x68, 0x53, 0x10, 0xe5, 0x01, 0x00, 0xba, 0xc7 };
+            //payload
+            packet[9] = (byte)((start) ? 0x30 : 0x31);
+            setPacketSequence(packet);
+            setPacketCRCs(packet);
+            client.Send(packet);
+        }
         public static void setJpgQuality(int quality)
         {
             //                                          crc    typ  cmdL  cmdH  seqL  seqH  quaL  crc   crc
