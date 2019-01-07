@@ -61,6 +61,6 @@ namespace HelloTello
 Icons from Flaticon designer Roundicons.
 https://www.flaticon.com/authors/roundicons
 
-Written in C# using Xarmin.
+Written in C# using Xamarin.
 https://docs.microsoft.com/en-us/xamarin/cross-platform/get-started/installation/windows
 
